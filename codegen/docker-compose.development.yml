@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - 0.0.0.0:8000:8000
+      - 0.0.0.0:8001:8001
+    environment:
+      - PRIVATE_KEY_PATH=/code/private_key.json
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
+      - TEST_API_KEY
+      - TEST_EMAIL
+      - TEST_PASSWORD
+      - TEST_UID
+      - STAGE=DEV
+    volumes:
+      - .:/code/
+    tty: true
+    stdin_open: true
+    depends_on:
+      - mongo
+    links:
+      - mongo
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
+    ports:
+      - 27017:27017
+    volumes:
+      - diary-mongo:/data/db
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+
+  nginx-ssl:
+    image: steveltn/https-portal:1
+    ports:
+      - 0.0.0.0:80:80
+      - 0.0.0.0:443:443
+    environment:
+      DOMAINS: ${DOMAIN_NAME}
+      STAGE: production
+    restart: always
+    depends_on:
+      - app
+    volumes:
+      - ./logs/nginx-error_logs:/var/log/nginx
+      - ./logs/nginx-access_logs:/var/lib/logrotate
+      - ./nginx/nginx.ssl.conf.erb:/var/lib/nginx-conf/${DOMAIN_NAME}.ssl.conf.erb
+#      - ./nginx/nginx.conf.erb:/var/lib/nginx-conf/${DOMAIN_NAME}.conf.erb
+volumes:
+  diary-mongo:
+    driver:
+      local
+
+
+
+
+
