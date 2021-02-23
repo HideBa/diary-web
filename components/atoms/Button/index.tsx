@@ -13,6 +13,8 @@ export type Props = {
   text?: string;
   icon?: IconType;
   iconPlace?: "left" | "right";
+  type?: "button" | "submit" | "reset" | undefined;
+  disabled?: boolean;
 };
 
 const Button: React.FC<Props> = ({
@@ -23,9 +25,17 @@ const Button: React.FC<Props> = ({
   text,
   icon,
   iconPlace = "left",
+  type,
+  disabled = false,
 }) => {
   return (
-    <ChakraButton className={className} variant={variant} colorScheme={colorSchema} color={color}>
+    <ChakraButton
+      className={className}
+      variant={variant}
+      colorScheme={colorSchema}
+      color={color}
+      type={type}
+      disabled={disabled}>
       <Flex>
         {iconPlace === "left" && icon && <Icon icon={icon} />}
         {text}
