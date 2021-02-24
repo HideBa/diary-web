@@ -10,7 +10,7 @@
     "type": "tsc --noEmit",
     "check": "run-p lint type",
     "code-gen": "swagger-typescript-api -p ./diary-document.yml -o ./types -n swagger-type.ts",
-    "mock": "json-server --watch"
+    "mock": "json-server --config mock/json-server.json mock/data.json"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.5",
