@@ -4,4 +4,4 @@ export const LOGIN = BASE_URL + "/login";
 
 export const SIGNUP = BASE_URL + "/signup";
 
-export const DIARIES = BASE_URL + "/diary";
+export const DIARIES = BASE_URL + "/diaries";

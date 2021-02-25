@@ -12,18 +12,45 @@
           "text": "string"
         }
       ],
-      "time_table": [
+      "timeTable": [
         {
           "title": "string",
           "text": "string",
-          "start_time": "2021-02-23T23:32:07.075Z",
-          "end_time": "2021-02-23T23:32:07.075Z"
+          "startTime": "2021-02-23T23:32:07.075Z",
+          "endTime": "2021-02-23T23:32:07.075Z"
         },
         {
           "title": "string",
           "text": "string",
-          "start_time": "2021-02-23T23:32:07.075Z",
-          "end_time": "2021-02-23T23:32:07.075Z"
+          "startTime": "2021-02-23T23:32:07.075Z",
+          "endTime": "2021-02-23T23:32:07.075Z"
+        }
+      ]
+    },
+    {
+      "id": "3fa85f64-aaaaaf66afa6",
+      "title": "stringaaa",
+      "date": "2021-02-23",
+      "blocks": [
+        {
+          "text": "stringaa"
+        },
+        {
+          "text": "stringaa"
+        }
+      ],
+      "timeTable": [
+        {
+          "title": "string",
+          "text": "string",
+          "startTime": "2021-02-23T23:32:07.075Z",
+          "endTime": "2021-02-23T23:32:07.075Z"
+        },
+        {
+          "title": "string",
+          "text": "string",
+          "startTime": "2021-02-23T23:32:07.075Z",
+          "endTime": "2021-02-23T23:32:07.075Z"
         }
       ]
     }

@@ -1,3 +1,4 @@
+import Diary from "@diary-app/components/organisms/diary";
 import React from "react";
 
 export type Props = {
@@ -5,7 +6,7 @@ export type Props = {
 };
 
 const DiaryPage: React.FC<Props> = ({ className }) => {
-  return <div className={className}></div>;
+  return <Diary />;
 };
 
 export default DiaryPage;
