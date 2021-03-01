@@ -1,25 +1,25 @@
-import Diary from "@diary-app/components/organisms/diary";
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import { useRouter } from "next/router";
 import React from "react";
 
 export type Props = {
-  className?: string;
+  children?: React.ReactNode;
 };
 
-const DiaryPage: React.FC<Props> = ({ className }) => {
+// TODO: fix this component and use for all components
+const AuthenticationRequiredPage: React.FC<Props> = ({ children }) => {
   const router = useRouter();
   return (
     <FirebaseAuthConsumer>
-      {({ isSignedIn, firebase }) => {
+      {({ isSignedIn, user, providerId }) => {
         if (!isSignedIn) {
           router.push("/login");
           return null;
         }
-        return <Diary />;
+        return children;
       }}
     </FirebaseAuthConsumer>
   );
 };
 
-export default DiaryPage;
+export default AuthenticationRequiredPage;
