@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import Router, { useRouter } from "next/router";
-import Link from "next/link";
+import { default as SignupMolecule } from "@diary-app/components/molecules/Form/Signup";
 
 import { auth } from "@diary-app/auth/firebase";
-import { AuthContext } from "@diary-app/auth/provider";
 
 export type Props = {};
 
@@ -18,50 +17,16 @@ const SignUp: React.FC<Props> = () => {
     });
   }, []);
 
-  const createUser = async () => {
-    // e.preventDefault();
+  const signUp = async (email: string, password: string) => {
     try {
       await auth.createUserWithEmailAndPassword(email, password);
       router.push("/login");
     } catch (err) {
-      console.error(err.message);
+      console.error(err);
     }
   };
 
-  return (
-    <div className="wrapper">
-      <form className="auth" onSubmit={createUser}>
-        <div>
-          <label htmlFor="email" className="auth-label">
-            Email:{" "}
-          </label>
-          <input
-            id="email"
-            className="auth-input"
-            type="email"
-            onChange={e => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="mt-2">
-          <label htmlFor="password" className="auth-label">
-            Password:{" "}
-          </label>
-          <input
-            id="password"
-            className="auth-input"
-            type="password"
-            onChange={e => setPassword(e.target.value)}
-          />
-        </div>
-        <button className="auth-btn" type="submit">
-          SignUp
-        </button>
-      </form>
-      <Link href="/login">
-        <a className="auth-link">Login</a>
-      </Link>
-    </div>
-  );
+  return <SignupMolecule onSend={signUp} />;
 };
 
 export default SignUp;

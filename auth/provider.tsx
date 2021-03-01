@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import firebase from "firebase/app";
 import { auth } from "./firebase";
 
-type CurrentUser = firebase.User | null | undefined;
+export type CurrentUser = firebase.User | null | undefined;
 
 export type AuthContextProps = {
   currentUser: CurrentUser;

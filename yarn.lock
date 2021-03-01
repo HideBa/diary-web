@@ -1143,14 +1143,6 @@
   dependencies:
     tslib "^2.0.0"
 
-"@react-firebase/auth@^0.2.10":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@react-firebase/auth/-/auth-0.2.10.tgz#1f58a6c9dd7f89ec1ca03d0620929f1a6bac9c82"
-  integrity sha512-qeRv96HI5Y3nPRwO3Zi4QnYYeJstVu8lDih+QQbTeuadUUngchGw5Tp7dseOY5u3q/+e+kF2hV7BUkfYt7FS8g==
-  dependencies:
-    lodash.get "^4.4.2"
-    render-and-add-props "^0.5.0"
-
 "@types/firebase@^3.2.1":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@types/firebase/-/firebase-3.2.1.tgz#17c1c8fee7485ab09668d2461e34540bdf44b3b1"
@@ -1217,13 +1209,20 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react@^17.0.0", "@types/react@^17.0.2":
+"@types/react@*", "@types/react@^17.0.0", "@types/react@^17.0.2":
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.2.tgz#3de24c4efef902dd9795a49c75f760cbe4f7a5a8"
   integrity sha512-Xt40xQsrkdvjn1EyWe1Bc0dJLcil/9x2vAuW7ya+PuQip4UYUaXyhzWmAbwRsdMgwOFHpfp7/FFZebDU6Y8VHA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
+
+"@types/recoil@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@types/recoil/-/recoil-0.0.1.tgz#c69efee4871e0e3fc4fe19ba15a6bfc35f9b6bf1"
+  integrity sha512-pRrS1aizm7GqM9NciOSPGoQ7K56rhyMcha6/Zewkwnb/H1dmz7VbDs+RIE/QZOx9CBHqdFBAU4x6LYt+qJZV8A==
+  dependencies:
+    "@types/react" "*"
 
 "@types/swagger-schema-official@2.0.21":
   version "2.0.21"
@@ -3415,11 +3414,6 @@ lodash.camelcase@^4.3.0:
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
 
-lodash.get@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
-  integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
-
 lodash.mergewith@4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
@@ -4436,6 +4430,11 @@ readdirp@~3.5.0:
   dependencies:
     picomatch "^2.2.1"
 
+recoil@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.1.2.tgz#844c612f535826dbe54c977761a67ded16f6d063"
+  integrity sha512-hIRrHlkmW4yITlBFprVYjVPhzPKYrJKoaDrrJtAtbkMeXfXaa/XE5OlyR10n+rNfnKWNToCKb3Z4fo86IGjkzg==
+
 reftools@^1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/reftools/-/reftools-1.1.8.tgz#cc08fd67eb913d779fd330657d010cc080c7d643"
@@ -4519,11 +4518,6 @@ remark@^12.0.0:
     remark-parse "^8.0.0"
     remark-stringify "^8.0.0"
     unified "^9.0.0"
-
-render-and-add-props@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/render-and-add-props/-/render-and-add-props-0.5.0.tgz#79e35b2251936ec187188322826e56401c2ef70b"
-  integrity sha512-jIVQsWxGDHwpMcI0d9w6OxF/GCtwL02Lyqk8aGjyF6LyR9GPLY+1ONwPjs6kbQ2d6gTApWk8aprZkBli0tpG/w==
 
 repeat-string@^1.0.0, repeat-string@^1.5.4:
   version "1.6.1"

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { auth } from "@diary-app/auth/firebase";
+import { default as LoginMolecule } from "@diary-app/components/molecules/Form/Login";
 
 export type Props = {
   className?: string;
@@ -8,8 +9,8 @@ export type Props = {
 
 const Login: React.FC<Props> = ({ className }) => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
@@ -17,8 +18,7 @@ const Login: React.FC<Props> = ({ className }) => {
     });
   }, []);
 
-  const logIn = async () => {
-    // e.preventDefault();
+  const logIn = async (email: string, password: string) => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
       router.push("/");
@@ -27,7 +27,7 @@ const Login: React.FC<Props> = ({ className }) => {
     }
   };
 
-  return <div className={className}></div>;
+  return <LoginMolecule onSend={logIn} />;
 };
 
 export default Login;

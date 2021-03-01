@@ -2,17 +2,17 @@ import { useEffect, FC, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-import { auth } from "@diary-app/auth/firebase";
+// import { auth } from "@diary-app/auth/firebase";
 
 const Home: FC = (props: any) => {
   const router = useRouter();
-  const [currentUser, setCurrentUser] = useState<null | object>(null);
+  // const [currentUser, setCurrentUser] = useState<null | object>(null);
 
-  useEffect(() => {
-    auth.onAuthStateChanged(user => {
-      user ? setCurrentUser(user) : router.push("/login");
-    });
-  }, []);
+  // useEffect(() => {
+  //   auth.onAuthStateChanged(user => {
+  //     user ? setCurrentUser(user) : router.push("/login");
+  //   });
+  // }, []);
 
   const logOut = async () => {
     try {
@@ -25,7 +25,7 @@ const Home: FC = (props: any) => {
 
   return (
     <div>
-      <pre>{currentUser && JSON.stringify(currentUser, null, 4)}</pre>
+      {/* <pre>{currentUser && JSON.stringify(currentUser, null, 4)}</pre> */}
       <button onClick={logOut}>Logout</button>
     </div>
   );

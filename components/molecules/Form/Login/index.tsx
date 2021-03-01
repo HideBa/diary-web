@@ -14,7 +14,7 @@ type AuthValues = {
   password: string;
 };
 
-const Signup: React.FC<Props> = ({ className, onSend }) => {
+const Login: React.FC<Props> = ({ className, onSend }) => {
   const initialValues: AuthValues = { email: "", password: "" };
   const handleSubmit = (values: AuthValues, { setSubmitting }: FormikHelpers<AuthValues>) => {
     setSubmitting(true);
@@ -60,4 +60,4 @@ const Signup: React.FC<Props> = ({ className, onSend }) => {
   );
 };
 
-export default Signup;
+export default Login;
