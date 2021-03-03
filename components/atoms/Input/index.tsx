@@ -14,6 +14,9 @@ export type Props = {
   type?: string;
   size?: string;
   error?: string;
+  name?: string;
+  id?: string;
+  onBlur?: (e: React.FocusEvent<any>) => void;
 };
 
 const Input: React.FC<Props> = ({
@@ -24,16 +27,22 @@ const Input: React.FC<Props> = ({
   type = "text",
   size,
   error,
+  name,
+  id,
+  onBlur,
 }) => {
   return (
-    <Flex>
+    <Flex direction="column">
       <ChakraInput
         className={className}
         placeholder={placeHolder}
         value={value}
         type={type}
         size={size}
+        name={name}
+        id={id}
         onChange={onChange}
+        onBlur={onBlur}
       />
       {error && <Text color="red">{error}</Text>}
     </Flex>

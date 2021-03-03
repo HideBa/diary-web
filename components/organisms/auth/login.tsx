@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { auth } from "@diary-app/auth/firebase";
 import { default as LoginMolecule } from "@diary-app/components/molecules/Form/Login";
@@ -20,7 +20,7 @@ const Login: React.FC<Props> = ({ className }) => {
     });
   }, []);
 
-  return <LoginMolecule onSend={logIn} />;
+  return <LoginMolecule onSend={logIn} className={className} />;
 };
 
 export default Login;

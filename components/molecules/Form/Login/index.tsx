@@ -3,6 +3,7 @@ import Input from "@diary-app/components/atoms/Input";
 import Text from "@diary-app/components/atoms/Text";
 import { Form, Formik, FormikHelpers } from "formik";
 import React from "react";
+import useValidate from "../use-validate";
 
 export type Props = {
   className?: string;
@@ -22,13 +23,17 @@ const Login: React.FC<Props> = ({ className, onSend }) => {
     onSend?.(values.email, values.password);
     setSubmitting(false);
   };
+  const { displayingErrorMessagesSchema } = useValidate();
 
   return (
     <div className={className}>
       <Text fontSize="lg" color="red">
-        Sign up
+        Login
       </Text>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={displayingErrorMessagesSchema}>
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
             <Input
@@ -36,23 +41,20 @@ const Login: React.FC<Props> = ({ className, onSend }) => {
               placeHolder="diary@example.com"
               onChange={handleChange}
               value={values.email}
-              error={errors.email}
+              id="email"
+              onBlur={handleBlur}
+              error={touched.email ? errors.email : ""}
             />
             <Input
               type="password"
               placeHolder="password"
               onChange={handleChange}
               value={values.email}
-              error={errors.password}
+              id="password"
+              onBlur={handleBlur}
+              error={touched.password ? errors.password : ""}
             />
-            <Input
-              type="password"
-              placeHolder="password"
-              onChange={handleChange}
-              value={values.email}
-              error={errors.password}
-            />
-            <Button type="submit" disabled={isSubmitting} text="send" />
+            <Button type="submit" disabled={isSubmitting || !!errors} text="send" />
           </Form>
         )}
       </Formik>

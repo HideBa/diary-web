@@ -1,16 +1,23 @@
-import Signup from "@diary-app/components/molecules/Form/Signup";
-import React from "react";
+import React, { useEffect } from "react";
+import { default as LoginMolecule } from "@diary-app/components/molecules/Form/Login";
+import { useRouter } from "next/router";
+import { auth, useAuth } from "@diary-app/auth";
 
 export type Props = {
   className?: string;
 };
 
 const Login: React.FC<Props> = ({ className }) => {
-  return (
-    <div className={className}>
-      <Signup />
-    </div>
-  );
+  const router = useRouter();
+  const { logIn } = useAuth();
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      user && router.push("/");
+    });
+  }, []);
+
+  return <LoginMolecule onSend={logIn} className={className} />;
 };
 
 export default Login;

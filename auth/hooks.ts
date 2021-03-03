@@ -1,4 +1,4 @@
-import { currentUser } from "@diary-app/localState/recoil/atom";
+import { currentUser, loading } from "@diary-app/localState/recoil/atom";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -95,5 +95,14 @@ export default () => {
     });
   });
 
-  return { logIn, signUp, logout, resetPassword, updateEmail, updatePassowrd };
+  return {
+    isLoading: loadingState,
+    logIn,
+    signUp,
+    logout,
+    resetPassword,
+    updateEmail,
+    updatePassowrd,
+    sendEmailValidation,
+  };
 };
