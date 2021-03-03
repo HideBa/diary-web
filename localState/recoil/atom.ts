@@ -1,10 +1,14 @@
 import { atom } from "recoil";
+import firebase from "firebase/app";
 
-export type CurrentUser = {
-  username?: string;
-};
+export type CurrentUser = firebase.User | null | undefined;
 
-export const currentUser = atom({
+export const currentUser = atom<CurrentUser>({
   key: "currentUser",
-  default: { username: undefined },
+  default: undefined,
+});
+
+export const loading = atom<boolean>({
+  key: "loading",
+  default: false,
 });

@@ -9,5 +9,6 @@ module.exports = mode => ({
     FIREBASE_DATBASE_URL: process.env.FIREBASE_DATBASE_URL,
     FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
     FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID,
+    APP_URL: process.env.APP_URL,
   },
 });
