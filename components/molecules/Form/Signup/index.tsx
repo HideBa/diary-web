@@ -20,7 +20,6 @@ const Signup: React.FC<Props> = ({ className, onSend }) => {
   const initialValues: AuthValues = { email: "", password: "", passwordConfirmation: "" };
   const handleSubmit = (values: AuthValues, { setSubmitting }: FormikHelpers<AuthValues>) => {
     setSubmitting(true);
-    console.log(values);
     onSend?.(values.email, values.password);
     setSubmitting(false);
   };
@@ -64,7 +63,7 @@ const Signup: React.FC<Props> = ({ className, onSend }) => {
                 onBlur={handleBlur}
                 error={touched.passwordConfirmation ? errors.passwordConfirmation : ""}
               />
-              <Button type="submit" disabled={isSubmitting || !!errors} text="send" />
+              <Button type="submit" disabled={isSubmitting} text="send" />
             </Form>
           );
         }}

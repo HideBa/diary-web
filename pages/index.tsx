@@ -1,32 +1,19 @@
-import { useEffect, FC, useState } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
+import React from "react";
+import Link from "next/link";
 
 // import { auth } from "@diary-app/auth/firebase";
+export type Props = {};
 
-const Home: FC = (props: any) => {
-  const router = useRouter();
-  // const [currentUser, setCurrentUser] = useState<null | object>(null);
-
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(user => {
-  //     user ? setCurrentUser(user) : router.push("/login");
-  //   });
-  // }, []);
-
-  const logOut = async () => {
-    try {
-      await auth.signOut();
-      router.push("/login");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
+const Home: React.FC<Props> = ({}) => {
   return (
     <div>
-      {/* <pre>{currentUser && JSON.stringify(currentUser, null, 4)}</pre> */}
-      <button onClick={logOut}>Logout</button>
+      <Link href="/signup">
+        <a>sign up</a>
+      </Link>
+      <br />
+      <Link href="/login">
+        <a>login</a>
+      </Link>
     </div>
   );
 };

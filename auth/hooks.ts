@@ -10,6 +10,7 @@ export default () => {
   const [loadingState, setLoadingState] = useRecoilState(loading);
 
   const signUp = async (email: string, password: string) => {
+    console.log(email, password);
     setLoadingState(true);
     try {
       await auth.createUserWithEmailAndPassword(email, password);

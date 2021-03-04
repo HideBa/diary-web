@@ -10,9 +10,12 @@ export const config = {
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
 };
 
-if (firebase.app.length === 0) {
-  firebase.initializeApp(config);
-}
+// !firebase.app.length ? firebase.initializeApp(config) : firebase.app();
+
+// if (!firebase.app.length) {
+//   firebase.initializeApp(config);
+// }
+firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 

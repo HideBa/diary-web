@@ -1,16 +1,10 @@
 import React from "react";
-import { default as SignupForm } from "@diary-app/components/molecules/Form/Signup";
+import { default as SignupForm } from "@diary-app/components/organisms/auth/signup";
 
-export type Props = {
-  className?: string;
-};
+export type Props = {};
 
-const Signup: React.FC<Props> = ({ className }) => {
-  return (
-    <div className={className}>
-      <SignupForm />
-    </div>
-  );
+const Signup: React.FC<Props> = () => {
+  return <SignupForm />;
 };
 
 export default Signup;
