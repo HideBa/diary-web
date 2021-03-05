@@ -15,6 +15,7 @@ const SignUp: React.FC<Props> = () => {
     auth.onAuthStateChanged(user => {
       user && router.push("/");
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <SignupMolecule onSend={signUp} />;

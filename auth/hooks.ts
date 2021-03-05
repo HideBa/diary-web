@@ -43,67 +43,69 @@ export default () => {
     setLoadingState(false);
   };
 
-  const resetPassword = async (email: string) => {
-    if (!process.env.APP_URL) return;
+  // const resetPassword = async (email: string) => {
+  //   if (!process.env.APP_URL) return;
 
-    setLoadingState(true);
-    const actionCodeSettings = {
-      url: process.env.APP_URL,
-    };
-    try {
-      auth.sendPasswordResetEmail(email, actionCodeSettings);
-    } catch (err) {
-      console.error(err);
-    }
-    setLoadingState(false);
-  };
+  //   setLoadingState(true);
+  //   const actionCodeSettings = {
+  //     url: process.env.APP_URL,
+  //   };
+  //   try {
+  //     auth.sendPasswordResetEmail(email, actionCodeSettings);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  //   setLoadingState(false);
+  // };
 
-  const sendEmailValidation = async () => {
-    if (!process.env.APP_URL) return;
-    const actionCodeSettings = {
-      url: process.env.APP_URL,
-    };
-    try {
-      userState?.sendEmailVerification(actionCodeSettings);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const sendEmailValidation = async () => {
+  //   if (!process.env.APP_URL) return;
+  //   const actionCodeSettings = {
+  //     url: process.env.APP_URL,
+  //   };
+  //   try {
+  //     userState?.sendEmailVerification(actionCodeSettings);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
-  const updatePassowrd = async (password: string) => {
-    setLoadingState(true);
-    try {
-      await userState?.updatePassword(password);
-    } catch (err) {
-      console.error(err);
-    }
-    setLoadingState(false);
-  };
+  // const updatePassowrd = async (password: string) => {
+  //   setLoadingState(true);
+  //   try {
+  //     await userState?.updatePassword(password);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  //   setLoadingState(false);
+  // };
 
-  const updateEmail = async (email: string) => {
-    setLoadingState(true);
-    try {
-      await userState?.updateEmail(email);
-    } catch (err) {
-      console.error(err);
-    }
-    setLoadingState(false);
-  };
+  // const updateEmail = async (email: string) => {
+  //   setLoadingState(true);
+  //   try {
+  //     await userState?.updateEmail(email);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  //   setLoadingState(false);
+  // };
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       setUserState(user);
     });
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     isLoading: loadingState,
     logIn,
     signUp,
     logout,
-    resetPassword,
-    updateEmail,
-    updatePassowrd,
-    sendEmailValidation,
+    currentUser: userState,
+    // resetPassword,
+    // updateEmail,
+    // updatePassowrd,
+    // sendEmailValidation,
   };
 };

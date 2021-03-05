@@ -23,7 +23,7 @@ const Signup: React.FC<Props> = ({ className, onSend }) => {
     onSend?.(values.email, values.password);
     setSubmitting(false);
   };
-  const { displayingErrorMessagesSchema } = useValidate();
+  const { signUpErrorMessagesSchema } = useValidate();
   return (
     <div className={className}>
       <Text fontSize="lg" color="red">
@@ -32,7 +32,7 @@ const Signup: React.FC<Props> = ({ className, onSend }) => {
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        validationSchema={displayingErrorMessagesSchema}>
+        validationSchema={signUpErrorMessagesSchema}>
         {({ values, errors, touched, handleChange, handleSubmit, isSubmitting, handleBlur }) => {
           return (
             <Form onSubmit={handleSubmit}>

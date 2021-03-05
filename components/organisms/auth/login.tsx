@@ -11,13 +11,12 @@ export type Props = {
 const Login: React.FC<Props> = ({ className }) => {
   const router = useRouter();
   const { logIn } = useAuth();
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       user && router.push("/");
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <LoginMolecule onSend={logIn} className={className} />;

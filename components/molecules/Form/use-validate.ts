@@ -1,11 +1,7 @@
 import * as Yup from "yup";
 
 export default () => {
-  const displayingErrorMessagesSchema = Yup.object().shape({
-    // username: Yup.string()
-    //   .min(2, "ユーザー名は2文字以上です")
-    //   .max(30, "ユーザー名は30文字以下です")
-    //   .required("必須項目です"),
+  const signUpErrorMessagesSchema = Yup.object().shape({
     email: Yup.string().email("無効なメールアドレスです").required("必須項目です"),
     password: Yup.string().required("必須項目です").min(8, "パスワードは8文字以上です"),
     passwordConfirmation: Yup.string()
@@ -15,5 +11,9 @@ export default () => {
         then: Yup.string().oneOf([Yup.ref("password")], "Password must be same"),
       }),
   });
-  return { displayingErrorMessagesSchema };
+  const logInErrorMessagesSchema = Yup.object().shape({
+    email: Yup.string().email("無効なメールアドレスです").required("必須項目です"),
+    password: Yup.string().required("必須項目です").min(8, "パスワードは8文字以上です"),
+  });
+  return { signUpErrorMessagesSchema, logInErrorMessagesSchema };
 };

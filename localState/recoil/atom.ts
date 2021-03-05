@@ -6,6 +6,7 @@ export type CurrentUser = firebase.User | null | undefined;
 export const currentUser = atom<CurrentUser>({
   key: "currentUser",
   default: undefined,
+  dangerouslyAllowMutability: true,
 });
 
 export const loading = atom<boolean>({

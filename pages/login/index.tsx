@@ -15,6 +15,7 @@ const Login: React.FC<Props> = ({ className }) => {
     auth.onAuthStateChanged(user => {
       user && router.push("/");
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <LoginMolecule onSend={logIn} className={className} />;

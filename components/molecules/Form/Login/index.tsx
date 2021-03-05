@@ -16,6 +16,7 @@ type AuthValues = {
 };
 
 const Login: React.FC<Props> = ({ className, onSend }) => {
+  console.log("loading");
   const initialValues: AuthValues = { email: "", password: "" };
   const handleSubmit = (values: AuthValues, { setSubmitting }: FormikHelpers<AuthValues>) => {
     setSubmitting(true);
@@ -23,7 +24,7 @@ const Login: React.FC<Props> = ({ className, onSend }) => {
     onSend?.(values.email, values.password);
     setSubmitting(false);
   };
-  const { displayingErrorMessagesSchema } = useValidate();
+  const { logInErrorMessagesSchema } = useValidate();
 
   return (
     <div className={className}>
@@ -33,7 +34,7 @@ const Login: React.FC<Props> = ({ className, onSend }) => {
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        validationSchema={displayingErrorMessagesSchema}>
+        validationSchema={logInErrorMessagesSchema}>
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
             <Input
@@ -49,12 +50,12 @@ const Login: React.FC<Props> = ({ className, onSend }) => {
               type="password"
               placeHolder="password"
               onChange={handleChange}
-              value={values.email}
+              value={values.password}
               id="password"
               onBlur={handleBlur}
               error={touched.password ? errors.password : ""}
             />
-            <Button type="submit" disabled={isSubmitting || !!errors} text="send" />
+            <Button type="submit" disabled={isSubmitting} text="send" />
           </Form>
         )}
       </Formik>
